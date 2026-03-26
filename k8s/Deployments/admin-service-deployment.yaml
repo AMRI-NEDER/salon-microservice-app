@@ -1,0 +1,126 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-service
+  namespace: salon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin-service
+  template:
+    metadata:
+      labels:
+        app: admin-service
+    spec:
+      containers:
+        - name: admin-service
+          image: myacr10.azurecr.io/admin-service:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3008
+          env:
+            - name: PORT
+              value: "3008"
+
+            - name: NODE_ENV
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: NODE_ENV
+
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: JWT_SECRET
+
+            - name: AUTH_DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: AUTH_DB_URL
+
+            - name: BOOKING_DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: BOOKING_DB_URL
+
+            - name: RESERVATION_DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: RESERVATION_DB_URL
+
+            - name: NOTIFICATION_DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: NOTIFICATION_DB_URL
+
+            - name: PROMOTION_DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: PROMOTION_DB_URL
+
+            - name: SMTP_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: SMTP_HOST
+
+            - name: SMTP_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: SMTP_PORT
+
+            - name: SMTP_USER
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: SMTP_USER
+
+            - name: SMTP_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: SMTP_PASS
+
+            - name: SMTP_FROM
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: SMTP_FROM
+
+            - name: USE_CLAUDE_API
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: USE_CLAUDE_API
+
+            - name: ANTHROPIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: salon-secrets
+                  key: ANTHROPIC_API_KEY
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3008
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3008
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3

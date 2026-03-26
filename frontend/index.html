@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura Cut — Premium Barbershop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a class="logo" href="#" onclick="showPage('home')">Aura Cut</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li><a href="#" onclick="showPage('services')">Services</a></li>
+      <li><a href="#" onclick="showPage('booking')">Booking</a></li>
+      <li><a href="#" onclick="showPage('promotions')">Promotions</a></li>
+      <li><a href="#" onclick="showPage('chat')">AI Chat</a></li>
+      <li id="navAuthItem">
+        <a href="#" class="btn-nav" onclick="openModal('login')">Sign In</a>
+      </li>
+      <li id="navAdminItem" class="hidden">
+        <a href="#" onclick="showPage('admin')">⚡ Admin</a>
+      </li>
+      <li id="navUserItem" class="hidden">
+        <span id="navUserName"></span>
+        <a href="#" onclick="logout()">Sign Out</a>
+      </li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main>
+
+    <!-- HOME -->
+    <div id="page-home" class="page active">
+      <section class="hero">
+        <div class="hero-text">
+          <p class="eyebrow">SELYENA · TUNIS · Est. 2016</p>
+          <h1>The Craft of<br/><em>The Cut</em></h1>
+          <p class="hero-sub">Precision, ritual, and refinement — every visit an experience worth returning to.</p>
+          <div class="hero-btns">
+            <button class="btn-primary" onclick="showPage('booking')">Book a Visit</button>
+            <button class="btn-outline" onclick="showPage('services')">Our Services</button>
+          </div>
+        </div>
+        <div class="hero-img">
+          <img src="NEDER.jpg" alt="Barbershop" />
+          <div class="hero-card">
+            <span class="card-num">4,200+</span>
+            <span class="card-label">Satisfied clients</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-bar">
+        <div class="stat"><strong>12</strong><span>Expert barbers</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><strong>7 yrs</strong><span>Experience</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><strong>98%</strong><span>Satisfaction</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><strong>6</strong><span>Signature services</span></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="label">Why Aura Cut</p>
+          <h2>Barbering, <em>elevated</em></h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon">✦</div>
+            <h3>Master Barbers</h3>
+            <p>Every team member trained to a standard that goes beyond technique — into craft and instinct.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">◈</div>
+            <h3>Premium Products</h3>
+            <p>Top-tier grooming products only — from pre-shave oils to hand-picked finishing waxes.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">⬡</div>
+            <h3>Your Time, Respected</h3>
+            <p>No double-bookings, no rushing. Each appointment is yours — fully and without compromise.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- SERVICES -->
+    <div id="page-services" class="page">
+      <section class="section">
+        <div class="section-head">
+          <p class="label">What We Offer</p>
+          <h2>Our <em>Services</em></h2>
+          <p class="section-sub">Six signature treatments crafted for the modern gentleman.</p>
+        </div>
+        <!-- FIX: changed from table to card grid — JS fills id="svcGrid" -->
+      </section>
+    </div>
+
+    <!-- BOOKING -->
+    <div id="page-booking" class="page">
+      <section class="section">
+        <div class="section-head">
+          <p class="label">Reserve Your Chair</p>
+          <h2>Book an <em>Appointment</em></h2>
+        </div>
+
+        <div id="bookingGate" class="gate hidden">
+          <p>Please <a href="#" onclick="openModal('login')">sign in</a> or <a href="#" onclick="openModal('register')">create an account</a> to make a booking.</p>
+        </div>
+
+        <div id="bookingLayout" class="booking-layout">
+          <div class="booking-left">
+            <div class="form-group">
+              <label>Service</label>
+              <select id="bService">
+                <option value="">— Choose a service —</option>
+                <option>Classic Cut — DT35</option>
+                <option>Signature Fade — DT45</option>
+                <option>Beard Sculpt — DT30</option>
+                <option>Hot Towel Shave — DT40</option>
+                <option>Cut &amp; Beard — DT65</option>
+                <option>Full Groom Package — DT85</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Notes <span class="opt">(optional)</span></label>
+              <input type="text" id="bNotes" placeholder="Any special requests…" />
+            </div>
+            <div class="calendar">
+              <div class="cal-top">
+                <button class="cal-arrow" id="calPrev">&#8249;</button>
+                <span id="calTitle"></span>
+                <button class="cal-arrow" id="calNext">&#8250;</button>
+              </div>
+              <div class="cal-head">
+                <span>Mo</span><span>Tu</span><span>We</span>
+                <span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+              </div>
+              <div class="cal-grid" id="calGrid"></div>
+            </div>
+          </div>
+
+          <div class="booking-right">
+            <div class="time-box">
+              <p class="time-box-label">Available Times <span id="selectedDateLabel"></span></p>
+              <div id="timeGrid"><p class="dim">Select a date to see available slots.</p></div>
+            </div>
+            <div id="bookingSummary"></div>
+            <button class="btn-primary btn-full" id="confirmBtn" onclick="submitBooking()" disabled>
+              Confirm Booking
+            </button>
+          </div>
+        </div>
+
+        <div id="myBookings" class="my-bookings hidden">
+          <h3>Your Bookings</h3>
+          <div id="myBookingsList"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PROMOTIONS -->
+    <div id="page-promotions" class="page">
+      <section class="section">
+        <div class="section-head">
+          <p class="label">Special Offers</p>
+          <h2>Current <em>Promotions</em></h2>
+        </div>
+        <div id="promoGrid" class="promo-grid">
+          <p class="dim">Loading promotions…</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- CHAT -->
+    <div id="page-chat" class="page">
+      <section class="section">
+        <div class="section-head">
+          <p class="label">AI Concierge</p>
+          <h2>Chat with <em>Aura</em></h2>
+          <p class="section-sub">Ask anything about services, pricing, availability, or directions.</p>
+        </div>
+        <div class="chat-wrap">
+          <div class="chat-messages" id="chatMessages">
+            <div class="msg bot">
+              <div class="bubble">Welcome to Aura Cut ✦ I'm Aura. How can I help you today?</div>
+            </div>
+          </div>
+          <div class="chat-input-row">
+            <input id="chatInput" class="chat-input" type="text" placeholder="Ask about services, pricing, booking…" />
+            <button class="btn-primary" onclick="sendChat()">Send</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <div id="page-admin" class="page">
+      <div class="admin-wrap">
+        <aside class="admin-sidebar">
+          <p class="admin-sidebar-title">Admin Panel</p>
+          <button class="admin-nav-btn active" onclick="adminTab('dashboard', this)">
+            <span class="admin-nav-icon">📊</span> Dashboard
+          </button>
+          <button class="admin-nav-btn" onclick="adminTab('bookings', this)">
+            <span class="admin-nav-icon">📅</span> Bookings
+          </button>
+          <button class="admin-nav-btn" onclick="adminTab('users', this)">
+            <span class="admin-nav-icon">👤</span> Users
+          </button>
+          <button class="admin-nav-btn" onclick="adminTab('promotions', this)">
+            <span class="admin-nav-icon">🏷️</span> Promotions
+          </button>
+          <button class="admin-nav-btn" onclick="adminTab('notifications', this)">
+            <span class="admin-nav-icon">🔔</span> Notifications
+          </button>
+        </aside>
+
+        <div class="admin-content">
+
+          <!-- Dashboard -->
+          <div id="adm-dashboard" class="admin-section active">
+            <h2 class="admin-section-title">Dashboard <em>Overview</em></h2>
+            <div class="admin-stats">
+              <div class="admin-stat-card"><p class="admin-stat-label">Total Users</p><p class="admin-stat-value" id="dTotalUsers">—</p></div>
+              <div class="admin-stat-card"><p class="admin-stat-label">Total Bookings</p><p class="admin-stat-value" id="dTotalBookings">—</p></div>
+              <div class="admin-stat-card"><p class="admin-stat-label">Today</p><p class="admin-stat-value" id="dTodayBookings">—</p></div>
+              <div class="admin-stat-card gold"><p class="admin-stat-label">Upcoming</p><p class="admin-stat-value" id="dPending">—</p></div>
+              <div class="admin-stat-card"><p class="admin-stat-label">Unread</p><p class="admin-stat-value" id="dUnread">—</p></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;">
+              <div class="admin-table-wrap">
+                <div class="admin-table-header"><h3>Top Services</h3></div>
+                <div style="padding:1rem 1.4rem;">
+                  <ul class="top-svc-list" id="dTopServices"><li class="admin-empty">Loading…</li></ul>
+                </div>
+              </div>
+              <div class="admin-table-wrap">
+                <div class="admin-table-header"><h3>Bookings — Last 6 Months</h3></div>
+                <div style="padding:1rem 1.4rem;">
+                  <div class="mini-chart" id="dMiniChart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bookings -->
+          <div id="adm-bookings" class="admin-section">
+            <h2 class="admin-section-title">Manage <em>Bookings</em></h2>
+            <div class="admin-table-wrap">
+              <div class="admin-table-header">
+                <h3>All Bookings</h3>
+                <button class="btn-sm btn-sm-gold" onclick="loadAdminBookings()">↻ Refresh</button>
+              </div>
+              <div id="admBookingsBody"><p class="admin-loading">Loading…</p></div>
+            </div>
+          </div>
+
+          <!-- Users -->
+          <div id="adm-users" class="admin-section">
+            <h2 class="admin-section-title">Manage <em>Users</em></h2>
+            <div class="admin-table-wrap">
+              <div class="admin-table-header">
+                <h3>All Users</h3>
+                <button class="btn-sm btn-sm-gold" onclick="loadAdminUsers()">↻ Refresh</button>
+              </div>
+              <div id="admUsersBody"><p class="admin-loading">Loading…</p></div>
+            </div>
+          </div>
+
+          <!-- Promotions -->
+          <div id="adm-promotions" class="admin-section">
+            <h2 class="admin-section-title">Manage <em>Promotions</em></h2>
+            <div class="admin-form-card">
+              <h3>New Promotion</h3>
+              <div class="admin-form-row">
+                <div class="form-group"><label>Title</label><input type="text" id="pTitle" placeholder="Summer Offer" /></div>
+                <div class="form-group"><label>Discount (%)</label><input type="number" id="pDiscount" min="1" max="100" placeholder="20" /></div>
+                <div class="form-group"><label>End Date</label><input type="date" id="pEndDate" /></div>
+              </div>
+              <div class="form-group" style="margin-bottom:1rem;">
+                <label>Description</label>
+                <textarea id="pDesc" placeholder="Short description…"></textarea>
+              </div>
+              <button class="btn-primary" style="font-size:0.78rem;padding:0.6rem 1.5rem;" onclick="createPromo()">Add Promotion</button>
+            </div>
+            <div class="admin-table-wrap">
+              <div class="admin-table-header"><h3>Active Promotions</h3></div>
+              <div id="admPromosBody"><p class="admin-loading">Loading…</p></div>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <div id="adm-notifications" class="admin-section">
+            <h2 class="admin-section-title">Send <em>Notifications</em></h2>
+            <div class="admin-form-card">
+              <h3>Broadcast to All Users</h3>
+              <div class="form-group" style="margin-bottom:1rem;">
+                <label style="font-size:0.72rem;color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Message</label>
+                <textarea class="broadcast-area" id="broadcastMsg" placeholder="Type your notification message…"></textarea>
+              </div>
+              <button class="btn-primary" style="font-size:0.78rem;padding:0.6rem 1.5rem;" onclick="sendBroadcast()">Send Broadcast</button>
+            </div>
+            <div class="admin-table-wrap">
+              <div class="admin-table-header">
+                <h3>Recent Notifications</h3>
+                <button class="btn-sm btn-sm-gold" onclick="loadAdminNotifications()">↻ Refresh</button>
+              </div>
+              <div id="admNotifsBody"><p class="admin-loading">Loading…</p></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="logo footer-logo">Aura Cut</p>
+        <p class="footer-tag">Premium barbering in the heart of Tunis.</p>
+      </div>
+      <div class="footer-col">
+        <strong>Navigate</strong>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('services')">Services</a>
+        <a href="#" onclick="showPage('booking')">Booking</a>
+        <a href="#" onclick="showPage('promotions')">Promotions</a>
+      </div>
+      <div class="footer-col">
+        <strong>Contact</strong>
+        <span>Siliana, Tunis</span>
+        <span>+216 95 487 417</span>
+        <span>elamrineder100@gmail.com</span>
+        <span>Mon–Sat 9am–8pm · Sun 10am–5pm</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Aura Cut. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Auth Modal -->
+  <div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-tabs">
+        <button class="mtab active" id="mtabLogin" onclick="switchTab('login')">Sign In</button>
+        <button class="mtab" id="mtabRegister" onclick="switchTab('register')">Register</button>
+      </div>
+      <div id="formLogin">
+        <h2>Welcome back</h2>
+        <p class="modal-sub">Sign in to manage your bookings.</p>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" />
+        </div>
+        <p class="form-error hidden" id="loginError"></p>
+        <button class="btn-primary btn-full" onclick="handleLogin()">Sign In</button>
+      </div>
+      <div id="formRegister" class="hidden">
+        <h2>Create account</h2>
+        <p class="modal-sub">Join for easy booking and exclusive offers.</p>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="regName" placeholder="Your full name" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="regEmail" placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="regPassword" placeholder="Min. 6 characters" />
+        </div>
+        <p class="form-error hidden" id="registerError"></p>
+        <button class="btn-primary btn-full" onclick="handleRegister()">Create Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
