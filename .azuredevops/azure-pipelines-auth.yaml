@@ -29,7 +29,7 @@ stages:
     - task: AzureCLI@2
       displayName: Login to ACR
       inputs:
-        azureSubscription: 'YOUR-SERVICE-CONNECTION'
+        azureSubscription: 'azure-connection-salon'
         scriptType: bash
         scriptLocation: inlineScript
         inlineScript: |
@@ -59,7 +59,7 @@ stages:
     - task: AzureCLI@2
       displayName: Get AKS credentials
       inputs:
-        azureSubscription: 'YOUR-SERVICE-CONNECTION'
+        azureSubscription: 'azure-connection-salon'
         scriptType: bash
         scriptLocation: inlineScript
         inlineScript: |
