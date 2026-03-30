@@ -41,3 +41,6 @@ const PORT = process.env.PORT || 3006;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`[notification-service] Running on port ${PORT}`);
 });
+
+
+console.log("pipeline auto redeploy test 2 ");
