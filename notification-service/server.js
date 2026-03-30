@@ -26,12 +26,12 @@ app.get("/api/notifications/health", (req, res) => res.status(200).json({
   path: "/api/notifications/health"
 }));
 
-
+// changer votre mail ici pour tester le service mail
 app.get("/api/notifications/test-email", async (req, res) => {
   await mailService.sendMail({
     to: "elamrineder100@gmail.com",
     subject: "Aura Cut",
-    text: "Email Service is working",
+    text: "Welcome To Aura cut Nader",
   });
 
   res.json({ message: "Email sent" });

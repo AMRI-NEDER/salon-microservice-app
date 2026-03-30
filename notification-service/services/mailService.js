@@ -31,7 +31,7 @@ const mailService = {
             <hr style="border:none;border-top:1px solid #e8e0d0;margin:16px 0;" />
             <p style="color:#1a1510;font-size:15px;line-height:1.7;">${text}</p>
             <hr style="border:none;border-top:1px solid #e8e0d0;margin:16px 0;" />
-            <p style="color:#a89880;font-size:12px;">12 Savile Row, Mayfair, London W1S 3PQ</p>
+            <p style="color:#a89880;font-size:12px;">10 , Siliana, Tunisia</p>
           </div>
         `,
       });
