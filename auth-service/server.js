@@ -25,4 +25,4 @@ app.listen(PORT, "0.0.0.0", () => {
   console.log(`[auth-service] Running on port ${PORT}`);
 });
 
-console.log("pipeline auto redeploy test");
+console.log("pipeline auto redeploy test 2 ");
