@@ -24,5 +24,3 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`[auth-service] Running on port ${PORT}`);
 });
-
-console.log("auth-service pipeline test");
