@@ -17,7 +17,7 @@ variables:
   AKS_CLUSTER_NAME: salon-aks
   K8S_NAMESPACE: salon
   IMAGE_NAME: auth-service
-  IMAGE_TAG: $(Build.BuildId)
+  IMAGE_TAG: v1.$(Build.BuildId)
 
 stages:
 - stage: Build_And_Deploy
