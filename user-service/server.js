@@ -30,3 +30,5 @@ const PORT = process.env.PORT || 3002;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`[user-service] Running on port ${PORT}`);
 });
+
+console.log("🔥 New update for pipeline test");
