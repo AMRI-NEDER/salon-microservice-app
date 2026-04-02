@@ -21,11 +21,11 @@ spec:
             - containerPort: 3006
           resources:
             requests:
-              memory: "128Mi"
-              cpu: "100m"
+              memory: "48Mi"
+              cpu: "30m"
             limits:
-              memory: "256Mi"
-              cpu: "500m"
+              memory: "96Mi"
+              cpu: "100m"
           env:
             - name: NODE_ENV
               valueFrom:

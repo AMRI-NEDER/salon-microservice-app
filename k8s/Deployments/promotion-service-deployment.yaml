@@ -32,11 +32,11 @@ spec:
                   key: PROMOTION_DB_URL
           resources:
             requests:
-              memory: "128Mi"
-              cpu: "100m"
+              memory: "48Mi"
+              cpu: "30m"
             limits:
-              memory: "256Mi"
-              cpu: "300m"
+              memory: "96Mi"
+              cpu: "100m"
           readinessProbe:
             httpGet:
               path: /health

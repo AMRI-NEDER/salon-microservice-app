@@ -37,11 +37,11 @@ spec:
                   key: BOOKING_DB_URL
           resources:
             requests:
-              memory: "128Mi"
-              cpu: "100m"
+              memory: "64Mi"
+              cpu: "50m"
             limits:
-              memory: "256Mi"
-              cpu: "400m"
+              memory: "150Mi"
+              cpu: "128m"
           readinessProbe:
             httpGet:
               path: /health

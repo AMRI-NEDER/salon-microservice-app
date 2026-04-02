@@ -32,4 +32,4 @@ app.listen(PORT, "0.0.0.0", () => {
 });
 
 
-console.log("pipeline auto redeploy test 10 ");
+console.log("pipeline auto redeploy test 2 ");
