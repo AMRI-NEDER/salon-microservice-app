@@ -1,43 +1,39 @@
 output "resource_group_name" {
-  value = module.resource_group.name
+  value = azurerm_resource_group.rg.name
 }
 
 output "vnet_name" {
-  value = module.network.vnet_name
+  value = azurerm_virtual_network.vnet.name
 }
 
 output "aks_subnet_id" {
-  value = module.network.aks_subnet_id
+  value = azurerm_subnet.aks.id
 }
 
 output "appgw_subnet_id" {
-  value = module.network.appgw_subnet_id
+  value = azurerm_subnet.appgw.id
 }
 
 output "acr_name" {
-  value = module.acr.name
+  value = azurerm_container_registry.acr.name
 }
 
 output "acr_login_server" {
-  value = module.acr.login_server
+  value = azurerm_container_registry.acr.login_server
 }
 
 output "aks_name" {
-  value = module.aks.name
-}
-
-output "aks_principal_id" {
-  value = module.aks.kubelet_identity_object_id
+  value = azurerm_kubernetes_cluster.aks.name
 }
 
 output "postgres_server_name" {
-  value = module.postgres.server_name
+  value = azurerm_postgresql_flexible_server.postgres.name
 }
 
 output "postgres_fqdn" {
-  value = module.postgres.fqdn
+  value = azurerm_postgresql_flexible_server.postgres.fqdn
 }
 
 output "postgres_databases" {
-  value = module.postgres.databases
+  value = [for db in azurerm_postgresql_flexible_server_database.dbs : db.name]
 }

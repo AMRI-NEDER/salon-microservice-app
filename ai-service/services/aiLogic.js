@@ -26,11 +26,11 @@ const rules = [
   },
   {
     patterns: ["fade", "taper", "skin fade", "gradient", "low fade", "high fade"],
-    reply: "Our Signature Fade starts from £45. Our barbers handle every style — low, mid, high, skin, and shadow fades. Note your preference when booking.",
+    reply: "Our Signature Fade starts from dt45. Our barbers handle every style — low, mid, high, skin, and shadow fades. Note your preference when booking.",
   },
   {
     patterns: ["beard", "shave", "moustache", "facial hair", "hot towel"],
-    reply: "Beard Sculpt is dt30 — precision shaping and conditioning. Hot Towel Shave is £40 — the classic straight-razor wet shave. Both available as a combo with a haircut for dt65.",
+    reply: "Beard Sculpt is dt30 — precision shaping and conditioning. Hot Towel Shave is dt40 — the classic straight-razor wet shave. Both available as a combo with a haircut for dt65.",
   },
   {
     patterns: ["park", "parking", "car", "drive"],

@@ -1,91 +1,69 @@
-variable "project_name" {
-  type    = string
-  default = "salon"
-}
-
 variable "location" {
-  type    = string
-  default = "francecentral"
+  type = string
 }
 
 variable "resource_group_name" {
-  type    = string
-  default = "salon-rg"
+  type = string
 }
 
 variable "vnet_name" {
-  type    = string
-  default = "salon-vnet"
+  type = string
 }
 
 variable "vnet_address_space" {
-  type    = list(string)
-  default = ["10.0.0.0/16"]
+  type = list(string)
 }
 
 variable "aks_subnet_name" {
-  type    = string
-  default = "subnet-aks"
+  type = string
 }
 
 variable "aks_subnet_prefixes" {
-  type    = list(string)
-  default = ["10.0.1.0/24"]
+  type = list(string)
 }
 
 variable "appgw_subnet_name" {
-  type    = string
-  default = "subnet-appgw"
+  type = string
 }
 
 variable "appgw_subnet_prefixes" {
-  type    = list(string)
-  default = ["10.0.2.0/24"]
+  type = list(string)
 }
 
 variable "acr_name" {
-  type    = string
-  default = "myacr10"
+  type = string
 }
 
 variable "aks_name" {
-  type    = string
-  default = "salon-aks"
+  type = string
 }
 
 variable "aks_dns_prefix" {
-  type    = string
-  default = "salonaks"
+  type = string
 }
 
 variable "aks_node_count" {
-  type    = number
-  default = 1
+  type = number
 }
 
 variable "aks_vm_size" {
-  type    = string
-  default = "Standard_D2as_v5"
+  type = string
 }
 
 variable "aks_service_cidr" {
-  type    = string
-  default = "10.1.0.0/16"
+  type = string
 }
 
 variable "aks_dns_service_ip" {
-  type    = string
-  default = "10.1.0.10"
+  type = string
 }
 
 variable "postgres_server_name" {
-  type    = string
-  default = "salon-pg-server"
+  type = string
 }
 
 variable "postgres_admin_username" {
-  type    = string
-  default = "Nader"
+  type = string
 }
 
 variable "postgres_admin_password" {
@@ -94,37 +72,21 @@ variable "postgres_admin_password" {
 }
 
 variable "postgres_sku_name" {
-  type    = string
-  default = "B_Standard_B1ms"
+  type = string
 }
 
 variable "postgres_storage_mb" {
-  type    = number
-  default = 32768
+  type = number
 }
 
 variable "postgres_version" {
-  type    = string
-  default = "14"
+  type = string
 }
 
 variable "postgres_databases" {
   type = list(string)
-  default = [
-    "auracut_auth",
-    "auracut_user",
-    "auracut_booking",
-    "auracut_reservations",
-    "auracut_promotion",
-    "auracut_notification"
-  ]
 }
 
 variable "tags" {
   type = map(string)
-  default = {
-    project     = "salon"
-    environment = "dev"
-    managed_by  = "terraform"
-  }
 }

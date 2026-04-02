@@ -19,6 +19,13 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 3007
+          resources:
+            requests:
+              memory: "192Mi"
+              cpu: "150m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
           env:
             - name: NODE_ENV
               valueFrom:

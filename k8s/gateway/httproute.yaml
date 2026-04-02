@@ -6,6 +6,8 @@ metadata:
 spec:
   parentRefs:
     - name: salon-gateway
+  hostnames:
+    - "auracut.duckdns.org"
   rules:
     - matches:
         - path:
