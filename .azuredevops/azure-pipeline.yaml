@@ -45,6 +45,7 @@ stages:
           echo "$CHANGED_FILES" | grep -q '^promotion-service/' && SERVICES="$SERVICES promotion-service"
           echo "$CHANGED_FILES" | grep -q '^notification-service/' && SERVICES="$SERVICES notification-service"
           echo "$CHANGED_FILES" | grep -q '^ai-service/' && SERVICES="$SERVICES ai-service"
+          echo "$CHANGED_FILES" | grep -q '^admin-service/' && SERVICES="$SERVICES admin-service"
 
           SERVICES=$(echo "$SERVICES" | xargs)
 

@@ -19,3 +19,6 @@ const PORT = process.env.PORT || 3008;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`admin-service running on port ${PORT}`);
 });
+
+
+console.log("🔥 New update for pipeline test yoooooooo");
