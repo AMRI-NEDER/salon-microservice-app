@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: booking-service
-          image: myacr10.azurecr.io/booking-service:v1
+          image: auracutacr.azurecr.io/booking-service:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 3003

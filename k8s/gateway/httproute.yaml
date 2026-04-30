@@ -1,13 +1,16 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: salon-routes
+  name: salon-https-routes
   namespace: salon
 spec:
   parentRefs:
     - name: salon-gateway
+      sectionName: https
+
   hostnames:
-    - "auracut.duckdns.org"
+    - "www.auracut.store"
+
   rules:
     - matches:
         - path:

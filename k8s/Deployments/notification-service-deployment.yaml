@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: notification-service
-          image: myacr10.azurecr.io/notification-service:v1
+          image: auracutacr.azurecr.io/notification-service:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 3006

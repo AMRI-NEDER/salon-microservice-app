@@ -100,6 +100,7 @@ resource "azurerm_postgresql_flexible_server_firewall_rule" "allow_azure" {
   end_ip_address   = "0.0.0.0"
 }
 
+
 resource "azurerm_postgresql_flexible_server_database" "dbs" {
   for_each  = toset(var.postgres_databases)
   name      = each.value
@@ -107,3 +108,4 @@ resource "azurerm_postgresql_flexible_server_database" "dbs" {
   collation = "en_US.utf8"
   charset   = "UTF8"
 }
+

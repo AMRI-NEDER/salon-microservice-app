@@ -10,7 +10,7 @@ aks_subnet_prefixes = ["10.0.1.0/24"]
 appgw_subnet_name     = "subnet-appgw"
 appgw_subnet_prefixes = ["10.0.2.0/24"]
 
-acr_name = "myacr10"
+acr_name = "auracutacr"
 
 aks_name           = "salon-aks"
 aks_dns_prefix     = "salonaks"

@@ -1,0 +1,11 @@
+node_modules/
+.terraform/
+.env
+.env.*
+*.log
+.vscode/
+.idea/
+*.tfstate
+*.tfstate.*
+secrets.yaml
+secret.yaml

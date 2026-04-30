@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-service
+  namespace: salon
+spec:
+  selector:
+    app: ai-service
+  ports:
+    - port: 3007
+      targetPort: 3007

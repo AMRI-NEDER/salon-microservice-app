@@ -1,6 +1,8 @@
+-- Enable UUID generation
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
-CREATE TABLE IF NOT EXISTS users (
+-- Users table
+CREATE TABLE users (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name VARCHAR(120) NOT NULL,
   email VARCHAR(200) UNIQUE NOT NULL,
@@ -10,4 +12,5 @@ CREATE TABLE IF NOT EXISTS users (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
-CREATE INDEX IF NOT EXISTS idx_user_email ON users(email);
+-- Index for performance
+CREATE INDEX idx_user_email ON users(email);
