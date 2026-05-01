@@ -31,4 +31,4 @@ app.listen(PORT, "0.0.0.0", () => {
   console.log(`[user-service] Running on port ${PORT}`);
 });
 
-console.log("🔥 New update for pipeline test");
+console.log("🚀 User service started pipeline test running");
