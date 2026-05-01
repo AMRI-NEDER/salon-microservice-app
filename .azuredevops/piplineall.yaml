@@ -1,0 +1,50 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  ACR: auracutacr.azurecr.io
+  TAG: v1.$(Build.BuildId)
+  NAMESPACE: salon
+
+stages:
+  # =========================
+  # STAGE 1 - ALL SERVICES
+  # =========================
+  - stage: Deploy_All_Services
+    displayName: Build Push Deploy All
+    jobs:
+      - job: all_services
+        steps:
+          - checkout: self
+
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: "azure-connection-salon"
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                az acr login --name auracutacr
+                az aks get-credentials --resource-group salon-rg --name salon-aks --overwrite-existing
+
+          - script: |
+              SERVICES="auth-service user-service booking-service reservation-service promotion-service notification-service ai-service admin-service frontend"
+
+              for S in $SERVICES; do
+                echo "===================="
+                echo "Processing $S"
+
+                docker build -t $(ACR)/$S:$(TAG) ./$S
+                docker push $(ACR)/$S:$(TAG)
+
+                kubectl set image deployment/$S \
+                  $S=$(ACR)/$S:$(TAG) \
+                  -n $(NAMESPACE)
+
+                kubectl rollout status deployment/$S -n $(NAMESPACE)
+              done
+            displayName: Build Push Deploy All Services

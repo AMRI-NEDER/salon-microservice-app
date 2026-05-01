@@ -1,0 +1,36 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  ACR: auracutacr.azurecr.io
+  IMAGE_NAME: auth-service
+  TAG: v1.$(Build.BuildId)
+  NAMESPACE: salon
+
+steps:
+  - checkout: self
+
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: "azure-connection-salon"
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: |
+        az acr login --name auracutacr
+        az aks get-credentials --resource-group salon-rg --name salon-aks --overwrite-existing
+
+  - script: |
+      docker build -t $(ACR)/$(IMAGE_NAME):$(TAG) ./auth-service
+      docker push $(ACR)/$(IMAGE_NAME):$(TAG)
+
+  - script: |
+      kubectl set image deployment/$(IMAGE_NAME) \
+        $(IMAGE_NAME)=$(ACR)/$(IMAGE_NAME):$(TAG) \
+        -n $(NAMESPACE)
+
+      kubectl rollout status deployment/$(IMAGE_NAME) -n $(NAMESPACE)
