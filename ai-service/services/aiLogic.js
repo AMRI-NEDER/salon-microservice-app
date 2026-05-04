@@ -14,7 +14,7 @@ const rules = [
   },
   {
     patterns: ["location", "address", "where", "find", "direction", "map", "tube"],
-    reply: "We're at 10 Row, siliana. Nearest tube: Oxford Circus or Green Park — both a short walk.",
+    reply: "We're at 10 Row, siliana centre.",
   },
   {
     patterns: ["promo", "discount", "offer", "deal", "voucher", "special", "saving"],

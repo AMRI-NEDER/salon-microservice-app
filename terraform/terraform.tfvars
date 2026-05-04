@@ -7,9 +7,6 @@ vnet_address_space = ["10.0.0.0/16"]
 aks_subnet_name     = "subnet-aks"
 aks_subnet_prefixes = ["10.0.1.0/24"]
 
-appgw_subnet_name     = "subnet-appgw"
-appgw_subnet_prefixes = ["10.0.2.0/24"]
-
 acr_name = "auracutacr"
 
 aks_name           = "salon-aks"
@@ -38,6 +35,6 @@ postgres_databases = [
 
 tags = {
   project     = "salon"
-  environment = "dev"
+  environment = "prod"
   managed_by  = "terraform"
 }

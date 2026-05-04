@@ -19,24 +19,6 @@ resource "azurerm_subnet" "aks" {
   address_prefixes     = var.aks_subnet_prefixes
 }
 
-resource "azurerm_subnet" "appgw" {
-  name                 = var.appgw_subnet_name
-  resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = var.appgw_subnet_prefixes
-
-  delegation {
-    name = "appgw-delegation"
-
-    service_delegation {
-      name = "Microsoft.ServiceNetworking/trafficControllers"
-      actions = [
-        "Microsoft.Network/virtualNetworks/subnets/join/action"
-      ]
-    }
-  }
-}
-
 resource "azurerm_container_registry" "acr" {
   name                = var.acr_name
   resource_group_name = azurerm_resource_group.rg.name

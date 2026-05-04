@@ -1,14 +1,14 @@
 trigger:
   branches:
     include:
-      - main
+      - auth-service/**
 
 pool:
   vmImage: ubuntu-latest
 
 variables:
   ACR: auracutacr.azurecr.io
-  IMAGE_NAME: auth-service
+  IMAGE_NAME: admin-service
   TAG: v1.$(Build.BuildId)
   NAMESPACE: salon
 
@@ -25,7 +25,7 @@ steps:
         az aks get-credentials --resource-group salon-rg --name salon-aks --overwrite-existing
 
   - script: |
-      docker build -t $(ACR)/$(IMAGE_NAME):$(TAG) ./auth-service
+      docker build -t $(ACR)/$(IMAGE_NAME):$(TAG) ./admin-service
       docker push $(ACR)/$(IMAGE_NAME):$(TAG)
 
   - script: |

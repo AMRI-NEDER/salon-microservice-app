@@ -22,14 +22,6 @@ variable "aks_subnet_prefixes" {
   type = list(string)
 }
 
-variable "appgw_subnet_name" {
-  type = string
-}
-
-variable "appgw_subnet_prefixes" {
-  type = list(string)
-}
-
 variable "acr_name" {
   type = string
 }

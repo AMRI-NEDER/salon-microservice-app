@@ -1,8 +1,0 @@
-apiVersion: alb.networking.azure.io/v1
-kind: ApplicationLoadBalancer
-metadata:
-  name: salon-alb
-  namespace: alb
-spec:
-  associations:
-    - /subscriptions/603bcfb2-d147-40ae-a496-6d9f17d76478/resourceGroups/salon-rg/providers/Microsoft.Network/virtualNetworks/salon-vnet/subnets/subnet-appgw

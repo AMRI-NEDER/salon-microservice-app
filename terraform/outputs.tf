@@ -10,9 +10,6 @@ output "aks_subnet_id" {
   value = azurerm_subnet.aks.id
 }
 
-output "appgw_subnet_id" {
-  value = azurerm_subnet.appgw.id
-}
 
 output "acr_name" {
   value = azurerm_container_registry.acr.name

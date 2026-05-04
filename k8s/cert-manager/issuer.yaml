@@ -4,13 +4,11 @@ metadata:
   name: letsencrypt-http
 spec:
   acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
     email: elamrineder100@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: letsencrypt-http-key
+      name: letsencrypt-http-account-key
     solvers:
       - http01:
-          gatewayHTTPRoute:
-            parentRefs:
-              - name: salon-gateway
-                namespace: salon
+          ingress:
+            class: nginx
