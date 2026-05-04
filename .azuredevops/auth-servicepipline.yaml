@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - admin-service/**
+      - auth-service/**
 
 pool:
   vmImage: ubuntu-latest
@@ -25,7 +25,7 @@ steps:
         az aks get-credentials --resource-group salon-rg --name salon-aks --overwrite-existing
 
   - script: |
-      docker build -t $(ACR)/$(IMAGE_NAME):$(TAG) ./admin-service
+      docker build -t $(ACR)/$(IMAGE_NAME):$(TAG) ./auth-service
       docker push $(ACR)/$(IMAGE_NAME):$(TAG)
 
   - script: |
