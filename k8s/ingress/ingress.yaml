@@ -3,6 +3,10 @@ kind: Ingress
 metadata:
   name: salon-ingress
   namespace: salon
+  annotations:
+    nginx.ingress.kubernetes.io/limit-rps: "2"
+    nginx.ingress.kubernetes.io/limit-burst: "5"
+
 spec:
   ingressClassName: nginx
 

@@ -10,3 +10,6 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - auracut.duckdns.org
+
+
+

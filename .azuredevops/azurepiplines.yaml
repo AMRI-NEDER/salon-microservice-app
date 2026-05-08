@@ -10,13 +10,13 @@ variables:
   ACR: auracutacr.azurecr.io
   TAG: v1.$(Build.BuildId)
   NAMESPACE: salon
-
+  
 stages:
   # =========================
-  # STAGE 1 - ALL SERVICES
+  # STAGE - ALL SERVICES
   # =========================
-  - stage: Deploy_All_Services
-    displayName: Build Push Deploy All
+  - stage: Deploy_Services
+    displayName: Build Push Deploy
     jobs:
       - job: all_services
         steps:
@@ -35,7 +35,7 @@ stages:
               SERVICES="auth-service user-service booking-service reservation-service promotion-service notification-service ai-service admin-service frontend"
 
               for S in $SERVICES; do
-                echo "===================="
+                echo "==================================================="
                 echo "Processing $S"
 
                 docker build -t $(ACR)/$S:$(TAG) ./$S
@@ -47,4 +47,5 @@ stages:
 
                 kubectl rollout status deployment/$S -n $(NAMESPACE)
               done
-            displayName: Build Push Deploy All Services
+            displayName: Build Push Deploy Services
+
